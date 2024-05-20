@@ -45,5 +45,23 @@ def f_lab1():
             return render_template('lab1.html', title="Метод k -ближайших соседей (KNN)", menu=menu, request='GET')
 
 
+@app.route("/p_lab2", methods=['POST', 'GET'])
+def f_lab2():
+    if request.method == 'GET':
+        return render_template('lab2.html', title="Логистическая регрессия", menu=menu, class_model='')
+    if request.method == 'POST':
+        try:
+            X_new = np.array([[float(request.form['Pclass']),
+                               float(request.form['Sex']),
+                               float(request.form['Age']),
+                               float(request.form['Siblings/Spouses Aboard']),
+                               float(request.form['Parents/Children Aboard']),
+                               float(request.form['Fare'])]])
+            pred = results[loaded_model_logistic.predict(X_new)[0]]
+            return render_template('lab2.html', title="Логистическая регрессия", menu=menu, class_model="Этот человек " + str(pred))
+        except:
+            return render_template('lab2.html', title="Логистическая регрессия", menu=menu, request='GET')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
