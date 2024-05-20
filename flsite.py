@@ -106,5 +106,25 @@ def f_lab3():
                                    class_model="Этот человек выжил с веротностью " + pred)
 
 
+@app.route("/p_lab4", methods=['POST', 'GET'])
+def f_lab4():
+    if request.method == 'GET':
+        return render_template('lab4.html', title="Дерево решений", menu=menu, class_model='')
+    if request.method == 'POST':
+        try:
+            X_new = np.array([[float(request.form['Pclass']),
+                               float(request.form['Sex']),
+                               float(request.form['Age']),
+                               float(request.form['Siblings/Spouses Aboard']),
+                               float(request.form['Parents/Children Aboard']),
+                               float(request.form['Fare'])]])
+            pred = results[loaded_model_tree.predict(X_new)[0]]
+
+            return render_template('lab4.html', title="Дерево решений", menu=menu,
+                                   class_model="Этот человек " + str(pred))
+        except:
+            return render_template('lab4.html', title="Дерево решений", menu=menu, request='GET')
+
+
 if __name__ == "__main__":
     app.run(debug=True)
