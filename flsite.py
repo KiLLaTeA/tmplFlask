@@ -80,10 +80,16 @@ def f_lab1():
             pred = results[loaded_model_knn.predict(X_new)[0]]
 
             data = read_data()
-            form_data = request.form.to_dict()
-            id_record = len(data) + 1
-            record = {'id': id_record, **form_data}
-            data.append(record)
+            logs = {
+                "id": str(uuid.uuid4()),
+                "Pclass": float(request.form['Pclass']),
+                "Sex": float(request.form['Sex']),
+                "Age": float(request.form['Age']),
+                "Siblings/Spouses Aboard": float(request.form['Siblings/Spouses Aboard']),
+                "Parents/Children Aboard": float(request.form['Parents/Children Aboard']),
+                "Fare": float(request.form['Fare']),
+            }
+            data.append(logs)
             write_data(data)
 
             return render_template('lab1.html', title="Метод k -ближайших соседей (KNN)", menu=menu, class_model="Этот человек " + str(pred))
@@ -163,6 +169,19 @@ def f_lab3():
             else:
                 pred = str(pred) + ' %'
 
+            data = read_data()
+            logs = {
+                "id": str(uuid.uuid4()),
+                "Pclass": float(request.form['Pclass']),
+                "Sex": float(request.form['Sex']),
+                "Age": float(request.form['Age']),
+                "Siblings/Spouses Aboard": float(request.form['Siblings/Spouses Aboard']),
+                "Parents/Children Aboard": float(request.form['Parents/Children Aboard']),
+                "Fare": float(request.form['Fare']),
+            }
+            data.append(logs)
+            write_data(data)
+
             return render_template('lab3.html', title="Линейная регрессия", menu=menu,
                                    class_model="Этот человек выжил с веротностью " + pred)
 
@@ -180,6 +199,19 @@ def f_lab4():
                                float(request.form['Parents/Children Aboard']),
                                float(request.form['Fare'])]])
             pred = results[loaded_model_tree.predict(X_new)[0]]
+
+            data = read_data()
+            logs = {
+                "id": str(uuid.uuid4()),
+                "Pclass": float(request.form['Pclass']),
+                "Sex": float(request.form['Sex']),
+                "Age": float(request.form['Age']),
+                "Siblings/Spouses Aboard": float(request.form['Siblings/Spouses Aboard']),
+                "Parents/Children Aboard": float(request.form['Parents/Children Aboard']),
+                "Fare": float(request.form['Fare']),
+            }
+            data.append(logs)
+            write_data(data)
 
             return render_template('lab4.html', title="Дерево решений", menu=menu,
                                    class_model="Этот человек " + str(pred))
