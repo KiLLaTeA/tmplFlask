@@ -1,0 +1,20 @@
+[
+    {
+        "id": "39762705-7cb4-49f7-a041-64f9e7419c90",
+        "Pclass": 1.0,
+        "Sex": 1.0,
+        "Age": 33.0,
+        "Siblings/Spouses Aboard": 3.0,
+        "Parents/Children Aboard": 3.0,
+        "Fare": 3.0
+    },
+    {
+        "id": "d1c5c951-744a-4970-ab9b-8355ca14ff48",
+        "Pclass": 1.0,
+        "Sex": 1.0,
+        "Age": 22.0,
+        "Siblings/Spouses Aboard": 2.0,
+        "Parents/Children Aboard": 2.0,
+        "Fare": 2.0
+    }
+]

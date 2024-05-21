@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+        }
+        .endpoint h2 {
+            color: #555;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Документация API</h1>
+    <p>Эта документация предоставляет информацию о том, как использовать эндпоинты API для работы с данными логов.</p>
+
+    <div class="endpoint">
+        <h2>Получить все логи</h2>
+        <p><strong>Эндпоинт:</strong> <code>GET /api/logs</code></p>
+        <p><strong>Описание:</strong> Возвращает все записи логов.</p>
+        <p><strong>Ответ:</strong> JSON-массив всех записей логов.</p>
+        <pre><code>
+[
+    {
+        "Age": 25.0,
+        "Name": "Иван Иванов",
+        "Message": "Пример лог-сообщения"
+    },
+    ...
+]
+        </code></pre>
+    </div>
+
+    <div class="endpoint">
+        <h2>Получить лог по возрасту</h2>
+        <p><strong>Эндпоинт:</strong> <code>GET /api/logs/&lt;float:age_current&gt;</code></p>
+        <p><strong>Описание:</strong> Возвращает запись лога по заданному возрасту.</p>
+        <p><strong>Параметры:</strong></p>
+        <ul>
+            <li><code>age_current</code> (float) - Возраст, по которому осуществляется поиск в логах.</li>
+        </ul>
+        <p><strong>Ответ:</strong></p>
+        <p>Если запись найдена:</p>
+        <pre><code>
+{
+    "Age": 25.0,
+    "Name": "Иван Иванов",
+    "Message": "Пример лог-сообщения"
+}
+        </code></pre>
+        <p>Если запись не найдена:</p>
+        <pre><code>
+{
+    "error": "Записи с таким возрастом не найдены!"
+}
+        </code></pre>
+    </div>
+</body>
+</html>
